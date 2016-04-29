@@ -1,171 +1,75 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "trabajoPractico1.h"
+#include <string.h>
+#include <ctype.h>
+#define CANT 20
+#include "funcionesPrototipos.h"
 int main()
 {
-   int num1, num2, opcion, flag1=0, flag2=0;
-
-    do
+    int opcion, indice, opcionOrdenar, flagOrdenar=0, flagGrafico=0;
+    ePersona UnaPersona[CANT];
+    inicializar(UnaPersona);
+    printf("\t\t\tBienvenido");
+    while(opcion!=5)
     {
-
-        printf("\n\nQue operacion desea realizar?: \n\nIngrese el numero de la operacion deseada y luego presione Enter.");
-        if(flag1==0)
-        {
-            num1=0;
-        }
-        printf("\n\n1- Ingresar el primer operando");printf("\tA=%d", num1);
-        if(flag2==0)
-        {
-            num2=0;
-        }
-        printf("\n2- Ingresar el segundo operando");  printf("\tB=%d", num2);
-
-        printf("\n3- Calcular la suma\n");
-        printf("4- Calcular la resta\n");
-        printf("5- Calcular la division\n");
-        printf("6- Calcular la multiplicacion\n");
-        printf("7- Calcular el factorial del primer numero\n");
-        printf("8- Calcular todas las operaciones\n");
-        printf("9- Salir\n");
-
-
-
-        scanf("%d", &opcion);
-
-
-    switch(opcion)
-        {
-        case 1:
-            printf("\nIngrese aqui el primer numero:");
-            scanf("%d",& num1);
-            printf("\nEl primer numero ingresado es %d\n", num1);
-            flag1++;
-            break;
-        case 2:
-            printf("\nIngrese aqui el segundo numero:");
-            scanf("%d",& num2);
-            printf("\nEl segundo numero ingresado es %d\n", num2);
-            flag2++;
-            break;
-            case 3:
-                if(flag1==0&&flag2==0)
-                {
-                    printf("\nPor favor, ingrese dos numeros, (opciones 1 y 2), antes de realizar cualquier operacion.\n");
-
-                }
-                else
-                {
-                calcularSuma(num1, num2);
-                }
-            break;
-
-            case 4:
-                if(flag1==0&&flag2==0)
-                {
-                    printf("\nPor favor, ingrese dos numeros, (opciones 1 y 2), antes de realizar cualquier operacion.\n");
-                }
-                else
-                {
-                calcularResta(num1, num2);
-                }
-            break;
-
-            case 5:
-                    if(flag1==0&&flag2==0)
-                    {
-                        printf("\nPor favor, ingrese dos numeros, (opciones 1 y 2), antes de realizar cualquier operacion.\n");
-                    }
-                    else
-                    {
-                        if(num2==0)
-                         {
-                                printf("Error. No es posible dividir un numero por 0.\n");
-                                break;
-                         }
-                         else
-                         {
-                                calcularDivision(num1, num2);
-                         }
-                    }
-            break;
-
-            case 6:
-                if(flag1==0&&flag2==0)
-                {
-                    printf("\nPor favor, ingrese dos numeros, (opciones 1 y 2), antes de realizar cualquier operacion.\n");
-                }
-                else
-                {
-                calcularMultiplicacion(num1, num2);
-                }
-                break;
-            case 7:
-                if(flag1==0&&flag2==0)
-                {
-                    printf("\nPor favor, ingrese al menos el primer numero, (opcion 1), antes de intentar factorear.\n");
-                }
-                else
-                {
-                calcularFactoreo(num1);
-                }
-                break;
-            case 8:
-                if(flag1==0&&flag2==0)
-                {
-                    printf("\nPor favor, ingrese dos numeros, (opciones 1 y 2), antes de realizar cualquier operacion.\n");
+            printf("\n\n\n\n\tIngrese la opcion deseada para continuar: ");
+            printf("\n\n\t1. Agregar a una persona");
+            printf("\n\n\t2. Borrar a una persona");
+            printf("\n\n\t3. Imprimir una lista ordenada por nombres");
+            printf("\n\n\t4. Imprimir grafico de edades");
+            printf("\n\n\t5. Salir\n");
+            scanf("%d", &opcion);
+            while(opcion<0||opcion>5)
+            {
+                printf("\nError. Reingrese una opcion valida\n");
+                scanf("%d", &opcion);
+            }
+            switch(opcion)
+            {
+                case 1:
+                    system("cls");
+                    indice=pedirLugar(UnaPersona);
+                    altaPersona(UnaPersona);
+                    flagGrafico++;
+                    flagOrdenar=1;
                     break;
-                }
-                else
-                {
-                        calcularSuma(num1, num2);
+                case 2:
+                    borrarPersona(UnaPersona);
+                    break;
+                case 3:
+                   if(flagOrdenar==1)
+                    {
+                        printf("\nComo desea ordenarlos? \n\n1. A - Z | 2. Z - A \n");
+                        scanf("%d", &opcionOrdenar);
+                        if(opcionOrdenar<1||opcionOrdenar>2)
+                            printf("\nError. Opcion no valida");
+                        else
+                        {
+                           if(opcionOrdenar==1)
+                            {
+                                ordenarMenorAMayor(UnaPersona);
+                            }
+                            else if(opcionOrdenar==2)
+                            {
+                                ordenarMayorAMenor(UnaPersona);
+                            }
 
-
-
-                        calcularResta(num1, num2);
-
-
-
-                        if(num2==0)
-                             {
-                                    printf("No es posible dividir un numero por 0.");
-
-                             }
-                             else
-                             {
-                                    calcularDivision(num1, num2);
-
-                             }
-
-                        calcularMultiplicacion(num1, num2);
-
-                        calcularFactoreo(num1);
+                        }
+                    }
+                    else if(flagOrdenar==0)
+                    {
+                        printf("Error. No hay ningun dato ingresado.");
                         break;
-                }
-
-            case 9:
-                printf("\tGracias por usar mi programa! \n");
-                break;
-            default:
-                printf("\nError de ingreso de operacion\n");
-                break;
-        }
-
-
-
+                    }
+                        break;
+                case 4:
+                    mostrarGraficoEdades(UnaPersona);
+                    break;
+                case 5:
+                    printf("Gracias por usar mi programa!\n\n");
+                    break;
+            }
+    }
     system("pause");
-
-
-
-    }while(opcion!=9);
-
-
     return 0;
 }
-
-
-
-
-
-
-
-
