@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1463798351 source:c:\users\matias\desktop\trabajopractico3\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"prototipos.h"
+
+1463798140 c:\users\matias\desktop\trabajopractico3\prototipos.h
+
+1463798218 source:c:\users\matias\desktop\trabajopractico3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"prototipos.h"
+
+1464403614 source:f:\trabajo practico 3- estructuras con punteros\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"cuerposFuncionesTP3.h"
+
+1463798142 f:\trabajo practico 3- estructuras con punteros\prototipos.h
+
+1464015242 source:e:\trabajo practico 3- estructuras con punteros\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1464403762 source:f:\trabajo practico 3- estructuras con punteros\funcionestp3.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"cuerposFuncionesTP3.h"
+
+1464403632 f:\trabajo practico 3- estructuras con punteros\cuerposfuncionestp3.h
+
